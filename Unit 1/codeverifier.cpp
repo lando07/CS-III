@@ -19,14 +19,14 @@ int main() {
 
     string empBin = bitset<32>(emp).to_string();
     string comBin = bitset<32>(com).to_string();
-    cout << empBin << '\n' << comBin << '\n';
+    // cout << empBin << '\n' << comBin << '\n';
     empBin = empBin.substr(empBin.length() - 12);
     comBin = comBin.substr(comBin.length() - 12);
     if (empBin == comBin) {
-      cout << "Code matches!" << '\n' << '\n';
+      // cout << "Code matches!" << '\n' << '\n';
       matches++;
     }
-    cout << endl;
+    // cout << endl;
   }
   cout << "Total matches: " << matches << endl;
   return 0;
