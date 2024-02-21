@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/home/lando/Repos/CS III/Unit 1",
-      "program": "/home/lando/Repos/CS III/Unit 1/build/Debug/outDebug",
+      "program": "/home/lando/Repos/CS III/Unit 1/build/Release/outRelease",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
