@@ -1,6 +1,6 @@
-#include "util.h"
 #include <stack>
 #include <string>
+#include "util.h"
 
 void goBack();
 void goToNewSite();
