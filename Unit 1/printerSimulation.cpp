@@ -21,10 +21,15 @@ queue<printTask> printQueue;
 printer prtr;
 
 int main() {
+  bool hourIsUp = false;
   cout << "Printer with " << prtr.PAGES_PER_MINUTE << "per minute."
        << "\n-------------------------" << endl;
   int currSecond = 0;
-  while (!printQueue.empty() || prtr.secRemaining != 0) {
+  while (!printQueue.empty() || prtr.secRemaining > 0) {
+    if (prtr.secRemaining <= 0 && !hourIsUp) {
+      hourIsUp = true;
+      cout << "1 hour is up" << endl;
+    }
     if (randInt(0, 180) == 180 &&
         prtr.secRemaining > 0) { // if print job is created
       printTask p;
@@ -56,5 +61,13 @@ int main() {
     prtr.secRemaining--;
     currSecond++;
   }
-  
+  if (!hourIsUp) {
+    cout << "1 hour is up" << endl;
+  }
+  int sum = 0;
+  for (int i : waitingTimes) {
+    sum += i;
+  }
+  cout << "Average wait time: " << (double)sum / waitingTimes.size()
+       << " seconds." << endl;
 }
