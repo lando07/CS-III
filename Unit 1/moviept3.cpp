@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#define movieFile "movies.txt" //edit this for a custom movie file
+
 using namespace std;
 
 void addMovie();
@@ -28,7 +30,7 @@ vector<movie> db;
 
 int main() {
   // Enter Your Code Here
-  getMoviesFromFile("movies.txt");
+  getMoviesFromFile(movieFile);
   bool addingMovies = true;
   while (addingMovies) {
     cout << "Would you like to (s)earch, (l)ist movies, or (e)xit? ";
