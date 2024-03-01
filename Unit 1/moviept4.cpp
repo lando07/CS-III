@@ -17,7 +17,7 @@ struct movie {
 
 void addMovie(set<movie> &db);
 void listMovies(set<movie> &db);
-void getMoviesFromFile(string filename);
+void getMoviesFromFile(string filename, set<movie> &db);
 void searchMovies(set<movie> &db);
 void searchByActor(set<movie> &db);
 void searchByRating(set<movie> &db);
@@ -26,7 +26,7 @@ void searchByYear(set<movie> &db);
 string movieToStr(movie m);
 int main() {
   set<movie> db;
-  getMoviesFromFile("movies.txt");
+  getMoviesFromFile("movies.txt", db);
   bool addingMovies = true;
   while (addingMovies) {
     char ans =
@@ -133,6 +133,32 @@ void searchByActor(set<movie> &db) {
   }
 }
 
-void searchByRating(set<movie> &db){
-  double ans = readDouble("Please enter a rating to search for:","Not a valid number, try again: ")
+void searchByRating(set<movie> &db) {
+  double ans = readDouble(1, 10, "Please enter a rating to search for:",
+                          "Not a valid number, try again: ");
+  bool found = false;
+  for (movie tmpMovie : db) {
+    if(tmpMovie.rating == ans){
+      found = true;
+      movieToStr(tmpMovie);
+    }
+  }
+  if(!found){
+    cout << "Not found." << endl;
+  }
+}
+
+void getMoviesFromFile(string filename, set<movie> &db){
+  ifstream file;
+  file.open(filename);
+  while (true) {
+    string line;
+    getline(file,line);
+    if(file.fail()){
+      break;
+    }
+    vector<string> data = splitLine(line,';');
+    movie tmp;
+      
+  }
 }

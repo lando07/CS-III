@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#define movieFile "movies.txt" //edit this for a custom movie file
+#define movieFile "movies.txt" // edit this for a custom movie file
 
 using namespace std;
 
@@ -170,7 +170,7 @@ void searchByRating() {
   }
   bool found = false;
   for (movie tmpMovie : db) {
-    if (tmpMovie.yearMade == ans) {
+    if (tmpMovie.rating == ans) {
       found = true;
       cout << "Title " << tmpMovie.title << endl
            << "Year: " << tmpMovie.yearMade << endl
