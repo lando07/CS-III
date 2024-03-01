@@ -1,4 +1,5 @@
 #include "util.h"
+#include <iterator>
 #include <queue>
 #include <string>
 #include <utility>
@@ -18,11 +19,14 @@ queue<pair<string, char>> shuffle(vector<pair<string, char>>);
 int main() {
   // Create the deck
   vector<pair<string, char>> deck = makeDeck();
+  // Shuffle the deck
   queue<pair<string, char>> shuffledDeck = shuffle(deck);
 
-  // Shuffle the deck
-
   // Deal the first 10 cards
+  for(int i = 0; i < 10; i++){
+    cout << shuffledDeck.front().first << " - " << shuffledDeck.front().second << endl;
+    shuffledDeck.pop();
+  }
 
   return 0;
 }
@@ -43,7 +47,7 @@ vector<pair<string, char>> makeDeck() {
   card = {"A", 'D'};
   deck.push_back(card);
   for (int i = 2; i < 10; i++) {
-    card = {to_string(i), 'D'};
+    card = {to_string(i), 'C'};
     deck.push_back(card);
   }
   card = {"J", 'C'};
@@ -55,7 +59,7 @@ vector<pair<string, char>> makeDeck() {
   card = {"A", 'C'};
   deck.push_back(card);
   for (int i = 2; i < 10; i++) {
-    card = {to_string(i), 'D'};
+    card = {to_string(i), 'H'};
     deck.push_back(card);
   }
   card = {"J", 'H'};
@@ -67,7 +71,7 @@ vector<pair<string, char>> makeDeck() {
   card = {"A", 'H'};
   deck.push_back(card);
   for (int i = 2; i < 10; i++) {
-    card = {to_string(i), 'D'};
+    card = {to_string(i), 'S'};
     deck.push_back(card);
   }
   card = {"J", 'S'};
@@ -81,7 +85,11 @@ vector<pair<string, char>> makeDeck() {
   return deck;
 }
 
-queue<pair<string, char>> shuffle(vector<pair<string, char>>) {
-    queue<pair<string, char>> shuffled;
-    
+queue<pair<string, char>> shuffle(vector<pair<string, char>> deck) {
+  queue<pair<string, char>> shuffled;
+  while(!deck.empty()){
+    shuffled.push(deck[randInt(0,deck.size() - 1)]);
+    deck.pop_back();
+  }
+  return shuffled;
 }
