@@ -17,6 +17,7 @@ void playTurn(set<int> &numbers, vector<player> &players);
 int main() {
 
   vector<player> players;
+  set<int> numsDrawn;
   while (true) {
     cout << "Would you like to:" << endl;
     cout << "1) Play one turn" << endl;
@@ -27,7 +28,8 @@ int main() {
     cout << "6) Exit" << endl;
     switch (readInt(1, 6, "> ", "Please enter a value between 1 and 6: ")) {
     case 1:
-      continue;
+      playTurn(numsDrawn, players);
+      break;
     case 2:
       for (player &p : players) {
         printBlankCard(p);
@@ -79,10 +81,31 @@ void printBlankCard(player &p) {
   }
 }
 
-void printMarkedCard(set<int> &numbers, player &p){
-
+void printMarkedCard(set<int> &numbers, player &p) {
+  cout << "******* " << p.name << "'s *******" << endl;
+  for (int r = 0; r < 5; r++) {
+    for (set<int> col : p.card) {
+      set<int>::iterator itr = col.begin();
+      advance(itr, r);
+      if (numbers.find(*itr) !=
+          numbers
+              .end()) { // aka the number in the column is inside our drawn nums
+        cout << 'X' << '\t';
+      } else {
+        cout << *itr << '\t';
+      }
+    }
+    cout << endl;
+  }
 }
 
-void playTurn(set<int> &numbers, vector<player> players){
-  
+void playTurn(set<int> &numbers, vector<player> &players) {
+  int drawnNum = randInt(1, 75);
+  while (!numbers.insert(drawnNum).second) {
+    drawnNum = randInt(1, 75);
+  }
+  cout << "You pulled a " << drawnNum << endl;
+  for (player &p : players) {
+    printMarkedCard(numbers, p);
+  }
 }
