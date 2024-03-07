@@ -13,6 +13,7 @@ void generateCard(player &p);
 void printBlankCard(player &p);
 void printMarkedCard(set<int> &numbers, player &p);
 void playTurn(set<int> &numbers, vector<player> &players);
+bool checkWinner(set<int> &numbers, player &p);
 
 int main() {
 
@@ -56,6 +57,10 @@ int main() {
   }
 }
 
+void autoPlay(set<int> &numbers, vector<player> &players){
+  while()
+}
+
 void generateCard(player &p) {
   p.card.clear();
   for (int c = 0; c < 5; c++) {
@@ -87,9 +92,8 @@ void printMarkedCard(set<int> &numbers, player &p) {
     for (set<int> col : p.card) {
       set<int>::iterator itr = col.begin();
       advance(itr, r);
-      if (numbers.find(*itr) !=
-          numbers
-              .end()) { // aka the number in the column is inside our drawn nums
+      if (numbers.find(*itr) != numbers.end()) { // aka the number in the column
+                                                 // is inside our drawn nums
         cout << 'X' << '\t';
       } else {
         cout << *itr << '\t';
@@ -100,6 +104,11 @@ void printMarkedCard(set<int> &numbers, player &p) {
 }
 
 void playTurn(set<int> &numbers, vector<player> &players) {
+  if (players.size() == 0) {
+    cout << "No players are registered, add players before playing a round"
+         << endl;
+    return;
+  }
   int drawnNum = randInt(1, 75);
   while (!numbers.insert(drawnNum).second) {
     drawnNum = randInt(1, 75);
@@ -108,4 +117,40 @@ void playTurn(set<int> &numbers, vector<player> &players) {
   for (player &p : players) {
     printMarkedCard(numbers, p);
   }
+}
+
+bool checkWinner(set<int> &numbers, player &p) {
+  for (set<int> col : p.card) {
+    set<int>::iterator itr = col.begin();
+    if (numbers.find(*itr) ==
+        numbers.end()) { // there's not a blotted out space for verticals
+      return false;
+    }
+    itr++;
+  }
+  for (int r = 0; r < 5; r++) {
+    for (set<int> col : p.card) {
+      set<int>::iterator itr = col.begin();
+      advance(itr, r);
+      if (numbers.find(*itr) ==
+          numbers.end()) { // if there's not a blotted out space for horizontals
+        return false;
+      }
+    }
+  }
+  for (int r = 0; r < 5; r++) {
+    set<int>::iterator itr = p.card[r].begin();
+    advance(itr, r);
+    if (numbers.find(*itr) == numbers.end()) {//if theres not a blotted out space for up/left diagonal
+      return false;
+    }
+  }
+  for (int r = 0; r < 5; r++) {
+    set<int>::iterator itr = p.card[4-r].begin();
+    advance(itr, r);
+    if (numbers.find(*itr) == numbers.end()) {//if theres not a space for down/right diagonal
+      return false;
+    }
+  }
+  return true;
 }
