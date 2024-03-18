@@ -13,4 +13,4 @@ jobs:
 
     steps:
     - name: make
-      run: cd "Unit 1" && make
+      run: /usr/bin/bash cd "~/CS-III/Unit 1/" && make
