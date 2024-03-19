@@ -15,12 +15,17 @@ int main() {
   while (true) {
     string tmpLine;
     getline(in, tmpLine);
+    if(in.fail()){
+      break;
+    }
     vector<string> line = splitLine(tmpLine);
     for (string &str : line) {
       words[str]++;
     }
   }
-  for(pair<string, bool> word: words){
-    
+  for (pair<string, bool> word : words) {
+    if (words[word.first] >= 100) {
+      cout << word.first << ": " << words[word.first] << endl;
+    }
   }
 }
