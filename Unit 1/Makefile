@@ -15,3 +15,4 @@ all:
 	g++ -o moviept4 moviept4.cpp util.cpp
 	g++ -o bingo bingo.cpp util.cpp
 	g++ -o wordCounter wordCounter.cpp util.cpp
+	g++ -o carRegistrar carRegistrar.cpp util.cpp
