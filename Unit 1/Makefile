@@ -16,3 +16,4 @@ all:
 	g++ -o bingo bingo.cpp util.cpp
 	g++ -o wordCounter wordCounter.cpp util.cpp
 	g++ -o carRegistrar carRegistrar.cpp util.cpp
+	g++ -o frc frc.cpp util.cpp
