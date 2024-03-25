@@ -1,4 +1,5 @@
 #include "util.h"
+#include <cmath>
 #include <fstream>
 #include <map>
 #include <queue>
@@ -20,7 +21,7 @@ struct team {
 
   bool operator<(team const &t) const {
     if (calcPointAvg() != t.calcPointAvg())
-      return calcPointAvg() < t.calcPointAvg();
+      return calcPointAvg() > t.calcPointAvg();
     else {
       return teamNum < t.teamNum;
     }
@@ -30,6 +31,7 @@ struct team {
 void importMatches(queue<match> &matches);
 void printRound(queue<match> &matches, int round);
 void recordRound(queue<match> &matches, map<unsigned int, team> &teams);
+void printStandings(map<unsigned int, team> &teams);
 
 int main() {
   queue<match> matches;
@@ -48,6 +50,7 @@ int main() {
       recordRound(matches, teams);
       break;
     case 2:
+      printStandings(teams);
       break;
     case 3:
       return 0;
@@ -55,6 +58,17 @@ int main() {
   }
 }
 
+void printStandings(map<unsigned int, team> &teams) {
+  set<team> sortedTeams;
+  for (pair<unsigned int, team> t : teams) {
+    sortedTeams.insert(t.second);
+  }
+  int i = 1;
+  for (set<team>::iterator itr = sortedTeams.begin(); itr != sortedTeams.end(); itr++) {
+    cout << i << ". " << itr->teamNum << ": "
+         << (round(itr->calcPointAvg() * 10) / 10) << endl;
+  }
+}
 void recordRound(queue<match> &matches, map<unsigned int, team> &teams) {
   unsigned int redPoints =
       readInt(0, 4, "Enter the Red Team's ranking points: ",
@@ -79,7 +93,7 @@ void printRound(queue<match> &matches, int round) {
   for (unsigned int teamNum : matches.front().redTeam) {
     cout << teamNum << ' ';
   }
-  
+
   cout << "\nBlue Alliance:\t";
   for (unsigned int teamNum : matches.front().blueTeam) {
     cout << teamNum << ' ';
