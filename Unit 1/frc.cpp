@@ -1,5 +1,6 @@
 #include "util.h"
 #include <fstream>
+#include <map>
 #include <queue>
 #include <set>
 #include <string>
@@ -12,8 +13,8 @@ struct match {
 
 struct team {
   unsigned int teamNum;
-  unsigned int totalPoints;
-  unsigned int matchesPlayed;
+  unsigned int totalPoints = 0;
+  unsigned int matchesPlayed = 0;
 
   double calcPointAvg() const { return (double)totalPoints / matchesPlayed; }
 
@@ -28,11 +29,11 @@ struct team {
 
 void importMatches(queue<match> &matches);
 void printRound(queue<match> &matches, int round);
-void recordRound(queue<match> &matches, set<team> teams);
+void recordRound(queue<match> &matches, map<unsigned int, team> &teams);
 
 int main() {
   queue<match> matches;
-  set<team> teams;
+  map<unsigned int, team> teams;
   importMatches(matches);
   int matchNum = 0;
   while (true) {
@@ -54,14 +55,22 @@ int main() {
   }
 }
 
-void recordRound(queue<match> &matches, set<team> &teams) {
-  unsigned int redPoints = readInt(0, 4, "Enter the Red Team's ranking points: ",
-                          "Ranking points should be from 0 to 4: ");
-  unsigned int bluePoints = readInt(0, 4, "Enter the Blue Team's ranking points: ",
-                           "Ranking points should be from 0 to 4: ");
-  for (int i = 0; i < 3; i++) {
-    team t{matches.front().redTeam[i], redPoints, 1};
+void recordRound(queue<match> &matches, map<unsigned int, team> &teams) {
+  unsigned int redPoints =
+      readInt(0, 4, "Enter the Red Team's ranking points: ",
+              "Ranking points should be from 0 to 4: ");
+  unsigned int bluePoints =
+      readInt(0, 4, "Enter the Blue Team's ranking points: ",
+              "Ranking points should be from 0 to 4: ");
+  for (int i = 0; i < 3; i++) { // BRO WHAT IS THIS CARNAGE 🤮🤮🤮
+    teams[matches.front().redTeam[i]].matchesPlayed++;
+    teams[matches.front().redTeam[i]].teamNum = matches.front().redTeam[i];
+    teams[matches.front().redTeam[i]].totalPoints += redPoints;
+    teams[matches.front().blueTeam[i]].matchesPlayed++;
+    teams[matches.front().blueTeam[i]].teamNum = matches.front().blueTeam[i];
+    teams[matches.front().blueTeam[i]].totalPoints += bluePoints;
   }
+  matches.pop();
 }
 
 void printRound(queue<match> &matches, int round) {
@@ -70,10 +79,12 @@ void printRound(queue<match> &matches, int round) {
   for (unsigned int teamNum : matches.front().redTeam) {
     cout << teamNum << ' ';
   }
-  cout << "Blue Alliance:\t";
+  
+  cout << "\nBlue Alliance:\t";
   for (unsigned int teamNum : matches.front().blueTeam) {
     cout << teamNum << ' ';
   }
+  cout << endl;
 }
 
 void importMatches(queue<match> &matches) {
