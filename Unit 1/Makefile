@@ -17,3 +17,4 @@ all:
 	g++ -o wordCounter wordCounter.cpp util.cpp
 	g++ -o carRegistrar carRegistrar.cpp util.cpp
 	g++ -o frc frc.cpp util.cpp
+	g++ -o sumDigits sumDigits.cpp util.cpp
