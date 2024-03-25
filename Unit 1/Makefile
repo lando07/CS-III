@@ -18,3 +18,4 @@ all:
 	g++ -o carRegistrar carRegistrar.cpp util.cpp
 	g++ -o frc frc.cpp util.cpp
 	g++ -o sumDigits sumDigits.cpp util.cpp
+	g++ -o removeA removeA.cpp util.cpp
