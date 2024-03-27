@@ -21,3 +21,4 @@ all:
 	g++ -o removeA removeA.cpp util.cpp
 	g++ -o validDNA validDNA.cpp util.cpp
 	g++ -o isSubSeqence isSubSequence.cpp util.cpp
+	g++ -o printAllBinPermutations printAllBinPermutations.cpp util.cpp

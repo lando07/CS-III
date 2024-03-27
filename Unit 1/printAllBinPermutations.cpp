@@ -2,7 +2,13 @@
 
 void printCombos(int numDigits, string soFar) {
   // Base Case
-
+  if (numDigits == soFar.size() + 1) {
+    cout << "0" + soFar << endl;
+    cout << "1" + soFar << endl;
+  } else {
+    printCombos(numDigits, "0" + soFar);
+    printCombos(numDigits, "1" + soFar);
+  }
   // Recursive call
 }
 
