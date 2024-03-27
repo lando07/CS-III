@@ -1,6 +1,5 @@
 #include "util.h"
 #include <string>
-#include <vector>
 
 int findValidPairs(string seq1, string seq2);
 

@@ -20,3 +20,4 @@ all:
 	g++ -o sumDigits sumDigits.cpp util.cpp
 	g++ -o removeA removeA.cpp util.cpp
 	g++ -o validDNA validDNA.cpp util.cpp
+	g++ -o isSubSeqence isSubSequence.cpp util.cpp
