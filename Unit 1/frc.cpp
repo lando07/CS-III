@@ -64,9 +64,11 @@ void printStandings(map<unsigned int, team> &teams) {
     sortedTeams.insert(t.second);
   }
   int i = 1;
-  for (set<team>::iterator itr = sortedTeams.begin(); itr != sortedTeams.end(); itr++) {
+  for (set<team>::iterator itr = sortedTeams.begin(); itr != sortedTeams.end();
+       itr++) {
     cout << i << ". " << itr->teamNum << ": "
          << (round(itr->calcPointAvg() * 10) / 10) << endl;
+    i++;
   }
 }
 void recordRound(queue<match> &matches, map<unsigned int, team> &teams) {
