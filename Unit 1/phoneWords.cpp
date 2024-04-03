@@ -1,7 +1,6 @@
 #include "util.h"
 #include <fstream>
 #include <set>
-#include <stdexcept>
 #include <string>
 #include <vector>
 
