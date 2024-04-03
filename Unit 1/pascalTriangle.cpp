@@ -26,8 +26,20 @@ void printTriangle(vector<vector<int>> &t) {
 
 /* This will be your recursive function. */
 void pascalRec(vector<vector<int>> &t, int remain) {
-
-  // Enter your code here.
+  if (remain == 0) {
+    printTriangle(t);
+    return;
+  }
+  vector<int> tmp;
+  for (int i = 0; i < t[t.size() - 1].size() + 1; i++) {
+    vector<int> &above = t[t.size() - 1];
+    int firstNum = (i - 1) < 0 ? 0 : above[i - 1];
+    int secondNum = (i > above.size() - 1) ? 0 : above[i];
+    tmp.push_back(firstNum + secondNum);
+  }
+  t.push_back(tmp);
+  remain--;
+  pascalRec(t, remain);
 }
 
 /* This is your helper function. It is set up
