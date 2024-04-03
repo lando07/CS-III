@@ -24,3 +24,4 @@ all:
 	g++ -g -o printAllBinPermutations printAllBinPermutations.cpp util.cpp
 	g++ -g -o pascalTriangle pascalTriangle.cpp util.cpp
 	g++ -g -o phoneWords phoneWords.cpp util.cpp
+	g++ -g -o diceSum diceSum.cpp util.cpp

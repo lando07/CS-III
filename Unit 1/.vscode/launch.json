@@ -2,24 +2,196 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "gdb",
+      "type": "lldb",
       "request": "launch",
+      "name": "Debug bingo",
+      "program": "${workspaceFolder}/bingo",
       "args": [],
-      "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/home/lando/Repos/CS III/Unit 1",
-      "program": "/home/lando/Repos/CS III/Unit 1/phoneWords",
-      "MIMode": "gdb",
-      "miDebuggerPath": "/usr/bin/gdb",
-      "externalConsole":true,
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug browserHistory",
+      "program": "${workspaceFolder}/browserHistory",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug cardShuffler",
+      "program": "${workspaceFolder}/cardShuffler",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug carRegistrar",
+      "program": "${workspaceFolder}/carRegistrar",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug cipher",
+      "program": "${workspaceFolder}/cipher",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug diceSum",
+      "program": "${workspaceFolder}/diceSum",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug easierinput",
+      "program": "${workspaceFolder}/easierinput",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug frc",
+      "program": "${workspaceFolder}/frc",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug gameOfLife",
+      "program": "${workspaceFolder}/gameOfLife",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug isSubSequence",
+      "program": "${workspaceFolder}/isSubSequence",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug moviept3",
+      "program": "${workspaceFolder}/moviept3",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug moviept4",
+      "program": "${workspaceFolder}/moviept4",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug necklace",
+      "program": "${workspaceFolder}/necklace",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug pascalTriangle",
+      "program": "${workspaceFolder}/pascalTriangle",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug phoneWords",
+      "program": "${workspaceFolder}/phoneWords",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug printAllBinPermutations",
+      "program": "${workspaceFolder}/printAllBinPermutations",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug printerSimulation",
+      "program": "${workspaceFolder}/printerSimulation",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug removeA",
+      "program": "${workspaceFolder}/removeA",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug rpnCalculator",
+      "program": "${workspaceFolder}/rpnCalculator",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug sumDigits",
+      "program": "${workspaceFolder}/sumDigits",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug syntaxChecker",
+      "program": "${workspaceFolder}/syntaxChecker",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug validDNA",
+      "program": "${workspaceFolder}/validDNA",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug visitTeams",
+      "program": "${workspaceFolder}/visitTeams",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug wordCounter",
+      "program": "${workspaceFolder}/wordCounter",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
