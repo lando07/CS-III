@@ -8,29 +8,24 @@ void printNums(vector<int> &chosen) {
   cout << endl;
 }
 
-void diceSumHelper(int dice, int desiredSum, vector<int> &chosen) {
-  if(chosen.size() > dice){
+void diceSumHelper(int dice, int sum, int desiredSum, vector<int> &chosen) {
+  if (chosen.size() > dice) {
     return;
   }
-  int sum = 0;
-  for(int i : chosen){
-    sum += i;
-  }
-  if(sum == desiredSum){
+  if (sum == desiredSum) {
     printNums(chosen);
     return;
   }
-  for(int i = 1; i <= 6; i++){
+  for (int i = 1; i <= 6; i++) {
     chosen.push_back(i);
-    diceSumHelper(dice, desiredSum, chosen);
+    diceSumHelper(dice, sum + i, desiredSum, chosen);
     chosen.pop_back();
-
   }
 }
 
 void diceSum(int dice, int desiredSum) {
   vector<int> chosen;
-  diceSumHelper(dice, desiredSum, chosen);
+  diceSumHelper(dice, 0, desiredSum, chosen);
 }
 
 int main() {
