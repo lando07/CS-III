@@ -44,10 +44,31 @@ void printItem(item i) {
 }
 
 // Enter your recursive function here
+bool findIncluded(vector<item> &items, int currWeight, int currValue) {
+  if (currValue > BEST_VALUE) {
+    return true;
+  }
+
+  for (int i = 0; i < items.size(); i++) {
+    if (items[i].weight + currWeight <= MAX_WEIGHT && !items[i].included) {
+      items[i].included = true;
+      currWeight += items[i].weight;
+      currValue += items[i].value;
+      if (findIncluded(items, currWeight, currValue)) {
+        return true;
+      }
+      items[i].included = false;
+      currWeight -= items[i].weight;
+      currValue -= items[i].value;
+    }
+  }
+  return false;
+}
 
 // Use this function to kick off your recursive call
 void airFreight(vector<item> &items) {
   // Call your recursive function from here
+  findIncluded(items, 0, 0);
 }
 
 int main() {
@@ -55,7 +76,19 @@ int main() {
   vector<item> items = readContents();
 
   // Call your recursive function
+  airFreight(items);
 
   // Print out the results
+  int totalWeight = 0;
+  int totalValue = 0;
+  for (item i : items) {
+    if (i.included) {
+      totalWeight += i.weight;
+      totalValue += i.value;
+      printItem(i);
+    }
+  }
+  cout << "Total weight: " << totalWeight << endl;
+  cout << "Total value: " << totalValue << endl;
   return 0;
 }

@@ -25,6 +25,8 @@ all:
 	g++ -g -o pascalTriangle pascalTriangle.cpp util.cpp
 	g++ -g -o phoneWords phoneWords.cpp util.cpp
 	g++ -g -o diceSum diceSum.cpp util.cpp
+	g++ -g -o airFreight airFreight.cpp util.cpp
+	g++ -g -o cellPhoneTowers cellPhoneTowers.cpp util.cpp
 clean:
 	@echo "Cleaning up..."
 	find . -type f ! -name '*.*' ! -name 'Makefile' -exec rm -f {} +

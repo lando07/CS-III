@@ -192,6 +192,22 @@
       "program": "${workspaceFolder}/wordCounter",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug airFreight",
+      "program": "${workspaceFolder}/airFreight",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug cellPhoneTowers",
+      "program": "${workspaceFolder}/cellPhoneTowers",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
