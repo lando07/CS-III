@@ -208,6 +208,14 @@
       "program": "${workspaceFolder}/cellPhoneTowers",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug sudokuSolver",
+      "program": "${workspaceFolder}/sudokuSolver",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

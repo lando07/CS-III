@@ -27,6 +27,7 @@ all:
 	g++ -g -o diceSum diceSum.cpp util.cpp
 	g++ -g -o airFreight airFreight.cpp util.cpp
 	g++ -g -o cellPhoneTowers cellPhoneTowers.cpp util.cpp
+	g++ -g -o sudokuSolver sudokuSolver.cpp util.cpp
 clean:
 	@echo "Cleaning up..."
 	find . -type f ! -name '*.*' ! -name 'Makefile' -exec rm -f {} +
