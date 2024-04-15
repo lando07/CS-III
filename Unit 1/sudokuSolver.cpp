@@ -2,16 +2,36 @@
 #include <string>
 #include <vector>
 
-bool nextEmpty(vector<vector<char>> &puzzle, int &row, int &col) {
-  while (row < 9) {
-    while (col < 9) {
-      cout << "Current char: '" << puzzle[row][col] << "'" << endl;
-      if (puzzle[row][col] == ' ') {
+bool nextEmpty(vector<vector<char>> &puzzle, int &row, int &col);
+bool isValid(vector<vector<char>> &puzzle, int row, int col, char testNum);
+void printPuzzle(vector<vector<char>> &puzzle);
+
+bool sudokuSolver(vector<vector<char>> &puzzle, int r, int c) {
+
+  if (!nextEmpty(puzzle, r, c)) {
+    return true;
+  }
+  for (char i = '1'; i <= '9'; i++) {
+    if (isValid(puzzle, r, c, i)) {
+      puzzle[r][c] = i;
+      if (sudokuSolver(puzzle, r, c)) {
         return true;
       }
-      col++;
+      puzzle[r][c] = ' ';
     }
-    row++;
+  }
+  return false;
+}
+
+bool nextEmpty(vector<vector<char>> &puzzle, int &row, int &col) {
+  for (int r = 0; r < 9; r++) {
+    for (int c = 0; c < 9; c++) {
+      if (puzzle[r][c] == ' ') {
+        row = r;
+        col = c;
+        return true;
+      }
+    }
   }
   return false;
 }
@@ -89,11 +109,12 @@ int main() {
   };
 
   printPuzzle(puzzle);
-  int r = 6;
-  int c = 0;
-  nextEmpty(puzzle, r, c);
-  cout << "The next empty row: " + to_string(r) +
-              "\nThe next empty col: " + to_string(c)
-       << endl;
+  cout << "Solving..." << endl;
+  if (sudokuSolver(puzzle, 0, 0)) {
+    cout << "Found solution!" << endl;
+    printPuzzle(puzzle);
+  } else {
+    cout << "No solution found. :/" << endl;
+  }
   return 0;
 }
