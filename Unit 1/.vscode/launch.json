@@ -216,6 +216,22 @@
       "program": "${workspaceFolder}/sudokuSolver",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug printStats",
+      "program": "${workspaceFolder}/printStats",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug stocks",
+      "program": "${workspaceFolder}/stocks",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
