@@ -232,6 +232,14 @@
       "program": "${workspaceFolder}/stocks",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug stupendouslyLongDivision",
+      "program": "${workspaceFolder}/stupendouslyLongDivision",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
