@@ -48,7 +48,7 @@ digit *makeList(string num) {
 
 void gigaDivide(string dividend, int divisor) {
   digit *head = makeList(dividend);
-  //printList(head);
+  // printList(head);
   gigantimasaurousLongDivision(head, true, 0, divisor);
 }
 
