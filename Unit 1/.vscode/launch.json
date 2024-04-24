@@ -240,6 +240,14 @@
       "program": "${workspaceFolder}/stupendouslyLongDivision",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug playlist",
+      "program": "${workspaceFolder}/playlist",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
