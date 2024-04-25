@@ -32,6 +32,7 @@ all:
 	g++ -g -o stocks stocks.cpp util.cpp
 	g++ -g -o stupendouslyLongDivision stupendouslyLongDivision.cpp util.cpp
 	g++ -g -o playlist playlist.cpp util.cpp
+	g++ -g -o connectingCities connectingCities.cpp util.cpp
 clean:
 	@echo "Cleaning up..."
 	find . -type f ! -name '*.*' ! -name 'Makefile' -exec rm -f {} +

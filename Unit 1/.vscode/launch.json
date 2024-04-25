@@ -248,6 +248,14 @@
       "program": "${workspaceFolder}/playlist",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug connectingCities",
+      "program": "${workspaceFolder}/connectingCities",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
