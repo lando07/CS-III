@@ -64,10 +64,51 @@ void findRoute(city *start, city *end) {
   printPath(end, end);
 }
 
+void calcRoute(map<string, city *> &cities) {
+  string start = readLine("Enter a starting city name ('list' to list all): ");
+  while (true) {
+    if (start == "list") {
+      for (pair<string, city *> p : cities) {
+        cout << p.first << endl;
+      }
+      start = readLine("Enter a starting city name ('list' to list all): ");
+      continue;
+    } else {
+      break;
+    }
+  }
+  string end = readLine("Enter a ending city name ('list' to list all): ");
+  while (true) {
+    if (end == "list") {
+      for (pair<string, city *> p : cities) {
+        cout << p.first << endl;
+      }
+      end = readLine("Enter a ending city name ('list' to list all): ");
+      continue;
+    } else {
+      break;
+    }
+  }
+  findRoute(cities[start], cities[end]);
+}
+
 int main() {
   map<string, city *> cities = loadGraph();
-  findRoute(cities["San Fransisco"], cities["Miami"]);
-  return 0;
+  while (true) {
+    cout << "Please select an option: \n1 - Calculate route\n2 - Add City to "
+            "the Graph\n3 - Exit\n ";
+    int ans = readInt(1, 3, ">> ");
+    switch (ans) {
+    case 1:
+      calcRoute(cities);
+      break;
+    case 2:
+      // addCity();
+      break;
+    case 3:
+      return 0;
+    }
+  }
 }
 
 /* This function loads cities from the text input
