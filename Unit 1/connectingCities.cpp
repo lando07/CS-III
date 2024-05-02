@@ -65,31 +65,68 @@ void findRoute(city *start, city *end) {
 }
 
 void calcRoute(map<string, city *> &cities) {
-  string start = readLine("Enter a starting city name ('list' to list all): ");
+  string start;
   while (true) {
+    start = readLine("Enter a starting city name ('list' to list all): ");
     if (start == "list") {
       for (pair<string, city *> p : cities) {
         cout << p.first << endl;
       }
-      start = readLine("Enter a starting city name ('list' to list all): ");
       continue;
+    } else if (cities.find(start) == cities.end()) {
+      cout << "That city was not found" << endl;
     } else {
       break;
     }
   }
-  string end = readLine("Enter a ending city name ('list' to list all): ");
+  string end;
   while (true) {
+    end = readLine("Enter a ending city name ('list' to list all): ");
     if (end == "list") {
       for (pair<string, city *> p : cities) {
         cout << p.first << endl;
       }
-      end = readLine("Enter a ending city name ('list' to list all): ");
-      continue;
+    } else if (cities.find(end) == cities.end()) {
+      cout << "That city was not found" << endl;
     } else {
       break;
     }
   }
   findRoute(cities[start], cities[end]);
+}
+
+void addCity(map<string, city *> &cities) {
+  string ct = readLine("Please enter the new city name: ");
+  cities[ct] = new city{ct, {}, false, NULL, 0};
+  while (true) {
+    cout << "Please enter a city " << ct << " is connected to." << endl;
+    string conn = readLine("('list' to list all; 'exit' when finished): ");
+    if (conn == "list") {
+      for (pair<string, city *> p : cities) {
+        cout << p.first << endl;
+      }
+    } else if (cities.find(conn) == cities.end()) {
+      cout << "That city was not found" << endl;
+    } else if (conn == "exit") {
+      // cities[ct] = tmp;
+      // cout << "exiting" << endl;
+
+      cout << ct << endl;
+      for (city *c : cities[ct]->connections) {
+        cout << c->name << endl;
+      }
+
+      return;
+    } else {
+
+      cities[ct]->connections.push_back(cities[conn]);
+      cities[conn]->connections.push_back(cities[ct]);
+      // cout << (cities[ct]->connections).size();
+      //  for (city *c : cities[ct]->connections) {
+      //    cout << c->name << endl;
+      //  }
+    }
+  }
 }
 
 int main() {
@@ -103,7 +140,7 @@ int main() {
       calcRoute(cities);
       break;
     case 2:
-      // addCity();
+      addCity(cities);
       break;
     case 3:
       return 0;
