@@ -34,6 +34,7 @@ all:
 	g++ -g -o playlist playlist.cpp util.cpp
 	g++ -g -o connectingCities connectingCities.cpp util.cpp
 	g++ -g -o linkedOut linkedOut.cpp util.cpp
+	g++ -g -o virtualQueues virtualQueues.cpp util.cpp
 clean:
 	@echo "Cleaning up..."
 	find . -type f ! -name '*.*' ! -name 'Makefile' -exec rm -f {} +

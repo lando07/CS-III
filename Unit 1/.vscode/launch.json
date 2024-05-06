@@ -264,6 +264,14 @@
       "program": "${workspaceFolder}/linkedOut",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug virtualQueues",
+      "program": "${workspaceFolder}/virtualQueues",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
