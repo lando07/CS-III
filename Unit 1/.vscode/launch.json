@@ -256,6 +256,14 @@
       "program": "${workspaceFolder}/connectingCities",
       "args": [],
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "debug linkedOut",
+      "program": "${workspaceFolder}/linkedOut",
+      "args": [],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
