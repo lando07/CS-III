@@ -115,8 +115,8 @@ void addPerson(map<string, person *> &net) {
 int main() {
   map<string, person *> net = loadGraph();
   while (true) {
-    cout << "Please select an option: \n1 - Find person\n2 - Add person to "
-            "the network\n3 - Exit\n ";
+    cout << "Please select an option: \n1 - Calculate Degree of Separation\n2 - Add person to "
+            "the graph\n3 - Exit\n ";
     int ans = readInt(1, 3, ">> ");
     switch (ans) {
     case 1:
