@@ -39,13 +39,13 @@ void addToQueue(virtualQueue &queue, guest *newGuest) {
     queue.tail = newGuest;
     newGuest->next = nullptr;
     newGuest->previous = nullptr;
-    newGuest->currentQueue = &queue;
   } else {
     newGuest->previous = queue.tail;
     queue.tail->next = newGuest;
     queue.tail = newGuest;
-    newGuest->currentQueue = &queue;
   }
+  newGuest->currentQueue = &queue;
+  queue.length++;
 }
 
 /*
@@ -58,6 +58,7 @@ void printQueue(virtualQueue &q) {
   guest *g = q.head;
   while (g != nullptr) {
     cout << g->name << endl;
+    g = g->next;
   }
   cout << endl;
 }
@@ -84,11 +85,17 @@ int main() {
 
   // Create virtual queue map and add rides with
   // the addRides function
-
+  map<string, virtualQueue> vq;
+  addRides(vq);
   // Test your addToQueue function by adding
   // at least 3 guests one queue
-
+  guest *g1 = new guest{"Jeremy"};
+  guest *g2 = new guest{"Zach"};
+  guest *g3 = new guest{"Karel"};
   // Test your printQueue function
-
+  addToQueue(vq["RISE"], g1);
+  addToQueue(vq["RISE"], g2);
+  addToQueue(vq["RISE"], g3);
+  printQueue(vq["RISE"]);
   return 0;
 }
